@@ -1,7 +1,8 @@
 from MergeSort import merge_sort
-from Binary_search import binary_search
+from Fing_two_elements.Binary_search import binary_search
 
-def find_two_elements(s, x):
+
+def is_two_elements(s, x):
     """
     Проверяет, есть ли в массиве чисел два числа, сумма которых равна x
     :param s: Список чисел
@@ -9,8 +10,10 @@ def find_two_elements(s, x):
     :return: True, если такие два числа есть. False, если их нет
     """
     s = merge_sort(s)
-    for y in s:
-        if binary_search(s, x-y):
+    for y in range(len(s)):
+        tmp = x - s[y]
+        if binary_search(s, tmp, y):
             return True
     return False
 
+print(is_two_elements([3, 7, 5, 7], 14))
